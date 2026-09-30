@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVisuals Panel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#0b0b12;
+    color:white;
+    display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:#13131d;
+    border-right:1px solid #232336;
+    padding:25px;
+    position:fixed;
+    left:0;
+    top:0;
+}
+
+.logo{
+    margin-bottom:35px;
+}
+
+.logo h1{
+    color:#9b5cff;
+    font-size:32px;
+    font-weight:800;
+}
+
+.logo p{
+    color:#8d8d8d;
+    margin-top:5px;
+    font-size:13px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.menu button{
+    width:100%;
+    border:none;
+    background:none;
+    color:#d8d8d8;
+    text-align:left;
+    padding:14px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.25s;
+    font-size:15px;
+}
+
+.menu button:hover{
+    background:#232336;
+    color:white;
+}
+
+.menu button.active{
+    background:#9b5cff;
+    color:white;
+}
+
+/* CONTENT */
+
+.main{
+    margin-left:260px;
+    width:100%;
+    padding:35px;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.title{
+    font-size:34px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#9a9a9a;
+    margin-bottom:30px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#161622;
+    border:1px solid #26263b;
+    border-radius:18px;
+    padding:24px;
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#9b5cff;
+    box-shadow:0 0 25px rgba(155,92,255,.35);
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#bcbcbc;
+}
+
+/* SECTION */
+
+.section{
+    background:#161622;
+    border:1px solid #26263b;
+    border-radius:18px;
+    padding:25px;
+    margin-top:20px;
+}
+
+.section h2{
+    margin-bottom:20px;
+}
+
+.section ul{
+    padding-left:20px;
+}
+
+.section li{
+    margin-bottom:10px;
+    color:#d4d4d4;
+}
+
+.rule{
+    margin-bottom:20px;
+}
+
+.rule b{
+    color:#b785ff;
+}
+
+.warning{
+    margin-top:25px;
+    padding:18px;
+    border-radius:12px;
+    background:#24163d;
+    border:1px solid #9b5cff;
+}
+
+.footer{
+    margin-top:35px;
+    color:#888;
+}
+.faq{
+    display:flex;
+    flex-direction:column;
+}
+
+.faq-item{
+    padding:25px 0;
+    border-bottom:1px solid #2a2a3d;
+}
+
+.faq-item h3{
+    font-size:18px;
+    margin-bottom:12px;
+    color:#fff;
+}
+
+.faq-item p{
+    color:#b4b4b4;
+    line-height:1.7;
+}
+.bot-button{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    padding:13px 20px;
+
+    background:#17131f;
+    color:#eee;
+
+    border:1px solid #8b5cf6;
+    border-radius:12px;
+
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+
+    box-shadow:0 0 12px rgba(139,92,246,.25);
+
+    transition:.25s;
+}
+
+.bot-button:hover{
+    background:#211735;
+    color:#fff;
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 0 15px rgba(139,92,246,.45),
+        0 0 30px rgba(139,92,246,.2);
+}
+
+</style>
+</head>
+<a href="https://t.me/svisualsmodbot" class="bot-button">
+    🤖 Тех-поддержка
+</a>
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        <h1>SVisuals</h1>
+        <p>@FranceNJ</p>
+    </div>
+
+    <div class="menu">
+        <button class="active" onclick="showPage('home', this)">🏠 Главная</button>
+        <button onclick="showPage('media', this)">🎬 Медийки</button>
+        <button onclick="showPage('support', this)">🛠️ Техподдержка</button>
+        <button onclick="showPage('moderation', this)">👮 Модерация</button>
+    </div>
+
+</div>
+
+<div class="main">
+
+    <!-- HOME -->
+
+    <div id="home" class="page active">
+
+        <h1 class="title">SVisuals Panel</h1>
+
+        <div class="section">
+
+            <h2>🎨 О проекте SVisuals</h2>
+
+            <p style="line-height: 1.8; color:#cfcfcf;">
+                SVisuals — команда, объединяющая медийных игроков,
+                техническую поддержку и модерацию.
+                Наша цель — поддерживать порядок в сообществе,
+                помогать пользователям и развивать проект.
+            </p>
+
+            <br>
+
+            <p style="color:#9b5cff;">
+                Добро пожаловать в официальную внутреннюю панель SVisuals.
+            </p>
+
+        </div>
+        <div class="faq">
+
+    <div class="faq-item">
+        <h3>Что такое SVisuals?</h3>
+        <p>
+            SVisuals — Визуал который улучшает виузальный вид игры.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>Для чего нужна эта панель?</h3>
+        <p>
+            Для быстрого доступа к правилам, инструкциям
+            и внутренней информации проекта.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>К кому обращаться при проблеме?</h3>
+        <p>
+            Используйте раздел "Техподдержка"
+            или свяжитесь с ответственным сотрудником.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>Кто может пользоваться панелью?</h3>
+        <p>
+            Сотрудники SVisuals: медийки,
+            техподдержка и модерация.
+        </p>
+    </div>
+
+</div>
+    </div>
+
+    <!-- MEDIA -->
+
+    <div id="media" class="page">
+
+        <h1 class="title">🎬 Медийки</h1>
+
+        <div class="section">
+
+            <ul>
+                <li>Соблюдать правила проекта.</li>
+                <li>Не публиковать запрещённый контент.</li>
+                <li>Использовать качественный монтаж.</li>
+                <li>Следить за оформлением видео.</li>
+                <li>Выпускать видео хотя бы раз в 3 дня.</li>
+                <li>Указывать тг-канал в видео.(https://t.me/svisualsmod)</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- SUPPORT -->
+
+    <div id="support" class="page">
+
+        <h1 class="title">🛠️ Техническая поддержка</h1>
+
+        <div class="section">
+
+            <h2>🛡️ Правила технической поддержки</h2>
+
+            <div class="rule">
+                <b>1. Споры и конфликты — 1 выговор</b><br>
+                Запрещено начинать или провоцировать конфликты.
+            </div>
+
+            <div class="rule">
+                <b>2. Неадекватное поведение — 1 выговор</b><br>
+                Оскорбления, токсичность и провокации запрещены.
+            </div>
+
+            <div class="rule">
+                <b>3. Несогласованная реклама — снятие</b><br>
+                Любая реклама без разрешения запрещена.
+            </div>
+
+            <div class="rule">
+                <b>4. Отказ в помощи — 1 выговор</b><br>
+                Если знаете решение проблемы — помогите.
+            </div>
+
+            <div class="rule">
+                <b>5. Неактив более 2 дней — 1 выговор</b><br>
+                Отсутствие без предупреждения наказывается.
+            </div>
+
+            <div class="warning">
+                ⚠ Максимум 3 выговора. После получения 3-го выговора сотрудник снимается с должности.
+            </div>
+            <div class="rule">
+                <b>Что делать если кто начал конфликт.</b><br>
+                Не продолжайте с ним конфликт а позовите модерацию(отметьте в чате или напишите в лс)
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MODERATION -->
+
+    <div id="moderation" class="page">
+
+        <h1 class="title">👮 Модерация</h1>
+
+        <div class="section">
+
+            <ul>
+                <li>Следить за соблюдением правил.</li>
+                <li>Выдавать наказания по регламенту.</li>
+                <li>Фиксировать нарушения.</li>
+                <li>Не злоупотреблять полномочиями.</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        SVisuals © 2026
+    </div>
+
+</div>
+
+<script>
+
+function showPage(id, button){
+
+    document.querySelectorAll('.page').forEach(page=>{
+        page.classList.remove('active');
+    });
+
+    document.querySelectorAll('.menu button').forEach(btn=>{
+        btn.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+    button.classList.add('active');
+}
+
+</script>
+
+</body>
+</html>
